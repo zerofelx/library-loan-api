@@ -127,7 +127,7 @@ npm run dev
 ### Copy
 - `id`: Int (Primary Key)
 - `bookId`: Int
-- `status`: String (e.g., "available", "lent", "lost")
+- `status`: String (e.g., "AVAILABLE", "LEASED" and "LOST")
 - `loans`: Loan[]
 
 ### User
