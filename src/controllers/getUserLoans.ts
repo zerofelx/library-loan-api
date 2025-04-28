@@ -8,6 +8,11 @@ async function getUserLoans(userId: number, prisma: PrismaClient) {
         },
         include: {
             loans: {
+                where: {
+                    copy: {
+                        status: "LEASED"
+                    }
+                },
                 include: {
                     copy: {
                         include: {

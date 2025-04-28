@@ -28,6 +28,27 @@ npm run prisma:generate
 npm run dev
 ```
 
+## Design Decisions
+
+### Database Modeling
+- **Separate Copy Entity**: Instead of just tracking the number of books, we use a Copy entity to track individual book copies. This allows better control over the status of each physical copy and its loan history.
+
+### Relationships
+- **Author-Book**: One-to-many relationship allowing an author to have multiple books while maintaining data integrity.
+- **Book-Copy**: One-to-many relationship enabling tracking of multiple copies per book title.
+- **Copy-Loan**: One-to-many relationship ensuring each copy can have a loan history.
+
+### Business Rules
+- Each book copy can only be loaned to one user at a time
+- Users can have multiple active loans
+- Return dates are optional to handle both active and completed loans
+- Book copies have a status field to track availability
+
+### Technical Choices
+- **Prisma ORM**: Chosen for type safety and excellent TypeScript integration
+- **Express.js**: Used for its simplicity and wide middleware ecosystem
+- **TypeScript**: Implements strong typing to prevent runtime errors
+
 ## API Endpoints
 
 ### Books
