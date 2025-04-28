@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
 async function addBook(title: string, authorName: string, numberOfCopies: number, prisma: PrismaClient) {
+// Check if the author already exists, if not, create a new author. All based on the author's name.
   let author = await prisma.author.findFirst({
     where: {
         name: authorName
@@ -15,6 +16,7 @@ async function addBook(title: string, authorName: string, numberOfCopies: number
     });
   }
 
+  // Create the book and associate it with the author
   const book = await prisma.book.create({
     data: {
         title,
@@ -26,15 +28,18 @@ async function addBook(title: string, authorName: string, numberOfCopies: number
     }
   })
 
+  // Create the specified number of copies for the book and set their status to "AVAILABLE"
   const copiesData = Array(numberOfCopies).fill(0).map(() => ({
     bookId: book.id,
     status: "AVAILABLE"
   }));
 
+  // Create copies in the database
   await prisma.copy.createMany({
     data: copiesData
   })
 
+  // Return the created book with its author and copies included
   return prisma.book.findUnique({
     where: {
         id: book.id
