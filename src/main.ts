@@ -2,6 +2,8 @@ import express, { Application } from 'express';
 import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
 import { addBook } from './controllers/createBook';
+import { lendBook } from './controllers/lendBook';
+import { createUser } from './controllers/createUser';
 
 // Init enviroment variables
 dotenv.config();
@@ -21,14 +23,14 @@ app.get('/', async (req, res) => {
   res.json(books);
 });
 
-addBook('The Great Gatsby', 'F. Scott Fitzgerald', 5, prisma)
-  .then((book) => {
-    console.log('Book created:', book);
-  })
-  .catch((error) => {
-    console.error('Error creating book:', error);
-  })
+lendBook(2, 1, prisma)
+.then((book) => {
+  console.log(book);
 
+})
+.catch((error) => {
+  console.error("Error lending book:", error);
+});
 
 
 // Declare the port
