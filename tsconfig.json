@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    /* Objetivo de salida: sintaxis ECMAScript moderna */
+    "target": "ES2020",                       // Compila a ES2020, compatible con Node.js actuales :contentReference[oaicite:0]{index=0}
+    
+    /* Módulos y resolución: ESM moderno */
+    "module": "NodeNext",                     // Usa módulos ESM con extensiones explícitas :contentReference[oaicite:1]{index=1}
+    "moduleResolution": "NodeNext",           // Resuelve imports al estilo Node.js actual :contentReference[oaicite:2]{index=2}
+    "esModuleInterop": true,                  // Permite default imports de módulos CommonJS :contentReference[oaicite:3]{index=3}
+    "resolveJsonModule": true,                // Soporta imports de archivos JSON :contentReference[oaicite:4]{index=4}
+
+    /* Control de directorios */
+    "rootDir": "./src",                       // Código fuente en /src :contentReference[oaicite:5]{index=5}
+    "outDir": "./dist",                       // Salida transpilada en /dist :contentReference[oaicite:6]{index=6}
+    "baseUrl": "./",                          // Para paths relativos (ver "paths") :contentReference[oaicite:7]{index=7}
+    
+    /* Seguridad de tipos */
+    "strict": true,                           // Activa todas las comprobaciones estrictas :contentReference[oaicite:8]{index=8}
+    "noImplicitAny": true,                    // Prohíbe tipos implícitos any :contentReference[oaicite:9]{index=9}
+    "strictNullChecks": true,                 // Control estricto de null y undefined :contentReference[oaicite:10]{index=10}
+
+    /* Rendimiento y ciclos de compilación */
+    "incremental": true,                      // Habilita compilación incremental :contentReference[oaicite:11]{index=11}
+    "tsBuildInfoFile": "./.tsbuildinfo",      // Archivo de caché incremental :contentReference[oaicite:12]{index=12}
+    "skipLibCheck": true,                     // Omite chequeos de tipo en librerías externas :contentReference[oaicite:13]{index=13}
+
+    /* Depuración */
+    "sourceMap": true,                        // Genera source maps para depuración :contentReference[oaicite:14]{index=14}
+
+    /* Compatibilidad con JSON y CommonJS */
+    "allowJs": false,                         // Deshabilita JS en el proyecto; sólo TS :contentReference[oaicite:15]{index=15}
+    "forceConsistentCasingInFileNames": true  // Evita errores en sistemas case-sensitive :contentReference[oaicite:16]{index=16}
+  },
+  "include": ["src"],                         // Incluye todos los .ts en src :contentReference[oaicite:17]{index=17}
+  "exclude": ["node_modules", "dist"]         // Excluye dependencias y salida :contentReference[oaicite:18]{index=18}
+}
