@@ -6,6 +6,7 @@ import { lendBook } from './controllers/lendBook';
 import { createUser } from './controllers/createUser';
 import { getUserLoans } from './controllers/getUserLoans';
 import { updateBook } from './controllers/updateBook';
+import { returnBook } from './controllers/returnBook';
 
 // Init enviroment variables
 dotenv.config();
@@ -21,7 +22,7 @@ app.use(express.json()); // Parse JSON requests
 
 // Routes
 app.get('/', async (req, res) => {
-  const books = await updateBook(4, "History of the Necronomicon", prisma);
+  const books = await returnBook(1, 1, prisma);
   res.json(books);
 });
 
