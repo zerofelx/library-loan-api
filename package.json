@@ -1,6 +1,6 @@
 {
   "name": "library-loan-api",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Backend API para la gestión de préstamos de libros universitarios.",
   "scripts": {
     "dev": "npx -y tsx ./src/main.ts",
