@@ -62,14 +62,14 @@ npm run dev
     "email": "user@example.com"
   }
   ```
+
+### Loans
 - **GET** `/api/get/loans`
   ```json
   {
     "userId": 1
   }
   ```
-
-### Loans
 - **POST** `/api/post/lend`
   ```json
   {
