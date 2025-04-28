@@ -49,7 +49,7 @@ npm run dev
 - **Commits and Comments on English**: Pese a que mi idioma natal es el Español tengo como regla personal el hacer todos los comentarios tanto en el código como en los commits en inglés. De la misma forma intento mantener todo el código siempre en inglés para facilitar la implementación en cualquier lugar del mundo.
 
 ### Entorno de Trabajo
-- **VSCode**: Utilizo VSCode como editor de textos junto a las extenciones respectivas para el linting de Prisma y Typescript
+- **VSCode**: Utilizo VSCode como editor de código junto a las extenciones respectivas para el linting de Prisma y Typescript
 - **Git**: Utilizo Git como sistema de control de versiones, con un repositorio público en GitHub y un repositorio privado en mi GitLab privado en mi hogar. Siempre mantengo un control de cada desarrollo con Git.
 - **Insomnia**: Utilizo Insomnia, en algunos otros casos Postman, para checar los endpoints. Siempre la tengo a la mano en el desarrollo de APIs.
 - **Hostinger MySQL**: Para evitar ralentizar mi computador de trabajo prefiero utilizar Databases remotas, utilizo mi plan de Hostinger para montar databases, configurarlas para acceso remoto y utilizarlas en mis proyectos.
