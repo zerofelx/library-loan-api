@@ -1,12 +1,7 @@
 import express, { Application } from 'express';
 import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
-import { createBook } from './controllers/createBook';
-import { lendBook } from './controllers/lendBook';
-import { createUser } from './controllers/createUser';
-import { getUserLoans } from './controllers/getUserLoans';
-import { updateBook } from './controllers/updateBook';
-import { returnBook } from './controllers/returnBook';
+import registerRoutes from './routes';
 
 // Init enviroment variables
 dotenv.config();
@@ -21,10 +16,7 @@ const app: Application = express();
 app.use(express.json()); // Parse JSON requests
 
 // Routes
-app.get('/', async (req, res) => {
-  const books = await returnBook(1, 1, prisma);
-  res.json(books);
-});
+app.use("/api", registerRoutes(prisma)); // Register API routes
 
 // Declare the port
 const PORT = process.env.PORT || 3000;
