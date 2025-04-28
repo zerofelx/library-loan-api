@@ -31,7 +31,7 @@ npm run dev
 ## Decisiones de Diseño
 
 ### Modelado de Database
-- **Tabla de Copias**: En lugar de simplemente registrar el número de libros, utilizamos una entidad de copia para registrar ejemplares individuales. Esto permite un mejor control del estado de cada ejemplar físico y su historial de préstamos.
+- **Copy Table**: En lugar de simplemente registrar el número de libros, utilizamos una entidad de copia para registrar ejemplares individuales. Esto permite un mejor control del estado de cada ejemplar físico y su historial de préstamos.
 
 ### Relaciones
 - **Author-Book**: Relación de uno a muchos que permite a un autor tener varios libros manteniendo la integridad de los datos.
@@ -51,7 +51,7 @@ npm run dev
 ### Entorno de Trabajo
 - **VSCode**: Utilizo VSCode como editor de código junto a las extenciones respectivas para el linting de Prisma y Typescript
 - **Git**: Utilizo Git como sistema de control de versiones, con un repositorio público en GitHub y un repositorio privado en mi GitLab privado en mi hogar. Siempre mantengo un control de cada desarrollo con Git.
-- **Insomnia**: Utilizo Insomnia, en algunos otros casos Postman, para checar los endpoints. Siempre la tengo a la mano en el desarrollo de APIs.
+- **Insomnia**: Utilizo Insomnia, en algunos otros casos Postman, para probar los endpoints. Es una herramienta escencial en mi flujo de trabajo para el desarrollo de APIs.
 - **Hostinger MySQL**: Para evitar ralentizar mi computador de trabajo prefiero utilizar Databases remotas, utilizo mi plan de Hostinger para montar databases, configurarlas para acceso remoto y utilizarlas en mis proyectos.
 
 ## API Endpoints
