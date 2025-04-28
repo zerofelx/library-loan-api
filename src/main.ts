@@ -1,10 +1,11 @@
 import express, { Application } from 'express';
 import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
-import { addBook } from './controllers/createBook';
+import { createBook } from './controllers/createBook';
 import { lendBook } from './controllers/lendBook';
 import { createUser } from './controllers/createUser';
 import { getUserLoans } from './controllers/getUserLoans';
+import { updateBook } from './controllers/updateBook';
 
 // Init enviroment variables
 dotenv.config();
@@ -20,7 +21,7 @@ app.use(express.json()); // Parse JSON requests
 
 // Routes
 app.get('/', async (req, res) => {
-  const books = await getUserLoans(1, prisma);
+  const books = await updateBook(4, "History of the Necronomicon", prisma);
   res.json(books);
 });
 
@@ -29,5 +30,5 @@ const PORT = process.env.PORT || 3000;
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`The server is running on http://localhost:${PORT}`);
+    console.log(`The server is running on port ${PORT}`);
 })
