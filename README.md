@@ -40,18 +40,18 @@ npm run dev
 
 ### Negocio
 - El identificador único de libro físico es un ID en la tabla Copy, solo un int incremental, pero se podría añadir una columna como identificador único con el Barcode único del libro físico y en un futuro implementar un lector de codigos de barras en el frontend.
-- Un usuario puede tener varios prestamos de libros pero las copias físicas solo pueden ser prestados una vez antes de ser regresados
+- Un usuario puede tener varios prestamos de libros pero las copias físicas solo pueden ser prestados una vez antes de ser regresados. Este diseño permite gestionar fácilmente penalizaciones o notificaciones automáticas en el futuro.
 - Existen tres columnas con respecto al préstamo: loanDate (Día que fue prestado), dueDate (Día que debe de regresarse el libro) y returnDate (Este es opcional, si está vacío es que aún no ha sido regresado el libro, cuando tenga una fecha esta indicará cuando se regresó el libro). Se hizo de esta manera para tener posibilidad de en un futuro hacer tracking de las copias no regresadas con los tiempos de prestamo, día que debería de regresarse y calcular el tiempo de mora.
 
 ### Decisiones Técnicas
 - **Prisma ORM**: Elegí Prisma por su fácil implementación con Typescript
 - **Express.js**: Decidí utilizarlo porque es simple de implementar y es con el que tengo experiencia
-- **Commits and Comments on English**: Pese a que mi idioma natal es el Español tengo como regla personal el hacer todos los comentarios tanto en el código como en los commits en inglés. De la misma forma intento mantener todo el código siempre en inglés para facilitar la implementación en cualquier lugar del mundo.
+- **Commits and Comments on English**: Aunque mi idioma nativo es el español, sigo la práctica de documentar y comentar todo el código en inglés para facilitar su colaboración y comprensión internacional.
 
 ### Entorno de Trabajo
 - **VSCode**: Utilizo VSCode como editor de código junto a las extenciones respectivas para el linting de Prisma y Typescript
 - **Git**: Utilizo Git como sistema de control de versiones, con un repositorio público en GitHub y un repositorio privado en mi GitLab privado en mi hogar. Siempre mantengo un control de cada desarrollo con Git.
-- **Insomnia**: Utilizo Insomnia, en algunos otros casos Postman, para probar los endpoints. Es una herramienta escencial en mi flujo de trabajo para el desarrollo de APIs.
+- **Insomnia**: Utilizo Insomnia, y en algunos casos también Postman, para probar los endpoints. Es una herramienta esencial en mi flujo de trabajo para el desarrollo de APIs.
 - **Hostinger MySQL**: Para evitar ralentizar mi computador de trabajo prefiero utilizar Databases remotas, utilizo mi plan de Hostinger para montar databases, configurarlas para acceso remoto y utilizarlas en mis proyectos.
 
 ## API Endpoints
@@ -127,7 +127,7 @@ npm run dev
 ### Copy
 - `id`: Int (Primary Key)
 - `bookId`: Int
-- `status`: String
+- `status`: String (e.g., "available", "lent", "lost")
 - `loans`: Loan[]
 
 ### User
