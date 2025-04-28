@@ -28,26 +28,31 @@ npm run prisma:generate
 npm run dev
 ```
 
-## Design Decisions
+## Decisiones de Diseño
 
-### Database Modeling
-- **Separate Copy Entity**: Instead of just tracking the number of books, we use a Copy entity to track individual book copies. This allows better control over the status of each physical copy and its loan history.
+### Modelado de Database
+- **Tabla de Copias**: En lugar de simplemente registrar el número de libros, utilizamos una entidad de copia para registrar ejemplares individuales. Esto permite un mejor control del estado de cada ejemplar físico y su historial de préstamos.
 
-### Relationships
-- **Author-Book**: One-to-many relationship allowing an author to have multiple books while maintaining data integrity.
-- **Book-Copy**: One-to-many relationship enabling tracking of multiple copies per book title.
-- **Copy-Loan**: One-to-many relationship ensuring each copy can have a loan history.
+### Relaciones
+- **Author-Book**: Relación de uno a muchos que permite a un autor tener varios libros manteniendo la integridad de los datos.
+- **Book-Copy**: Relación de uno a muchos que permite el seguimiento de múltiples copias por título de libro.
+- **Copy-Loan**: Relación de uno a muchos que garantiza que cada copia pueda tener un historial de préstamos.
 
-### Business Rules
-- Each book copy can only be loaned to one user at a time
-- Users can have multiple active loans
-- Return dates are optional to handle both active and completed loans
-- Book copies have a status field to track availability
+### Negocio
+- El identificador único de libro físico es un ID en la tabla Copy, solo un int incremental, pero se podría añadir una columna como identificador único con el Barcode único del libro físico y en un futuro implementar un lector de codigos de barras en el frontend.
+- Un usuario puede tener varios prestamos de libros pero las copias físicas solo pueden ser prestados una vez antes de ser regresados
+- Existen tres columnas con respecto al préstamo: loanDate (Día que fue prestado), dueDate (Día que debe de regresarse el libro) y returnDate (Este es opcional, si está vacío es que aún no ha sido regresado el libro, cuando tenga una fecha esta indicará cuando se regresó el libro). Se hizo de esta manera para tener posibilidad de en un futuro hacer tracking de las copias no regresadas con los tiempos de prestamo, día que debería de regresarse y calcular el tiempo de mora.
 
-### Technical Choices
-- **Prisma ORM**: Chosen for type safety and excellent TypeScript integration
-- **Express.js**: Used for its simplicity and wide middleware ecosystem
-- **TypeScript**: Implements strong typing to prevent runtime errors
+### Decisiones Técnicas
+- **Prisma ORM**: Elegí Prisma por su fácil implementación con Typescript
+- **Express.js**: Decidí utilizarlo porque es simple de implementar y es con el que tengo experiencia
+- **Commits and Comments on English**: Pese a que mi idioma natal es el Español tengo como regla personal el hacer todos los comentarios tanto en el código como en los commits en inglés. De la misma forma intento mantener todo el código siempre en inglés para facilitar la implementación en cualquier lugar del mundo.
+
+### Entorno de Trabajo
+- **VSCode**: Utilizo VSCode como editor de textos junto a las extenciones respectivas para el linting de Prisma y Typescript
+- **Git**: Utilizo Git como sistema de control de versiones, con un repositorio público en GitHub y un repositorio privado en mi GitLab privado en mi hogar. Siempre mantengo un control de cada desarrollo con Git.
+- **Insomnia**: Utilizo Insomnia, en algunos otros casos Postman, para checar los endpoints. Siempre la tengo a la mano en el desarrollo de APIs.
+- **Hostinger MySQL**: Para evitar ralentizar mi computador de trabajo prefiero utilizar Databases remotas, utilizo mi plan de Hostinger para montar databases, configurarlas para acceso remoto y utilizarlas en mis proyectos.
 
 ## API Endpoints
 
