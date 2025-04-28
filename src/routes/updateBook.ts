@@ -5,7 +5,7 @@ import { updateBook } from "src/controllers/updateBook";
 const router = Router();
 
 export default function updateBookRoute(prisma: PrismaClient) {
-    router.post("/post/updateBook", async (req, res) => {
+    router.post("/update/book", async (req, res) => {
         const { bookId, title } = req.body;
         
         if(!bookId || !title) {
