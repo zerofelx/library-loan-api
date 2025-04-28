@@ -66,7 +66,7 @@ npm run dev
     "copies": 3
   }
   ```
-- **POST** `/api/post/updateBook`
+- **POST** `/api/update/book`
   ```json
   {
     "bookId": 1,
