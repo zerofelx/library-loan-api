@@ -4,6 +4,7 @@ import { PrismaClient } from '@prisma/client';
 import { addBook } from './controllers/createBook';
 import { lendBook } from './controllers/lendBook';
 import { createUser } from './controllers/createUser';
+import { getUserLoans } from './controllers/getUserLoans';
 
 // Init enviroment variables
 dotenv.config();
@@ -19,19 +20,9 @@ app.use(express.json()); // Parse JSON requests
 
 // Routes
 app.get('/', async (req, res) => {
-  const books = await prisma.book.findMany();
+  const books = await getUserLoans(1, prisma);
   res.json(books);
 });
-
-lendBook(2, 1, prisma)
-.then((book) => {
-  console.log(book);
-
-})
-.catch((error) => {
-  console.error("Error lending book:", error);
-});
-
 
 // Declare the port
 const PORT = process.env.PORT || 3000;
