@@ -24,11 +24,23 @@ async function returnBook(userId: number, bookId: number, prisma: PrismaClient) 
         throw new Error("Book not found");
     }
 
+    // Get the copy id from the book
+    const copy = await prisma.copy.findFirst({
+        where: {
+            bookId: bookId,
+            status: "LEASED" // Check if the copy is leased
+        }
+    })
+
+    if (!copy) {
+        throw new Error("No leased copy found for this book");
+    }
+
     // Find a copy of the book that is currently leased by the user
     const copyLeased = await prisma.loan.findFirst({
         where: {
             userId: userId,
-            copyId: bookId,
+            copyId: copy?.id, // Check if the copy is leased by the user
             returnDate: null // Check if the book is currently leased
         }
     })

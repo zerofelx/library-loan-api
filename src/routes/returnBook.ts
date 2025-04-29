@@ -6,15 +6,15 @@ const router = Router();
 
 export default function returnBookRoute(prisma: PrismaClient) {
     router.post("/post/return", async (req, res) => {
-        const { userId, loanId } = req.body;
+        const { userId, bookId } = req.body;
 
-        if (!userId || !loanId) {
+        if (!userId || !bookId) {
             res.status(400).json({ error: "Invalid request body" });
             return;
         }
 
         try {
-            const updatedLoan = await returnBook(userId, loanId, prisma);
+            const updatedLoan = await returnBook(userId, bookId, prisma);
             res.status(200).json(updatedLoan);
         } catch (error: any) {
             if (error.message === "User not found") {
